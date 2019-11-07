@@ -18,4 +18,6 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/tambah_nelayan','HomeController@tambahNelayanPage')->name('tambahNelayanPage');
+
 Route::get('test', 'TestController@index');

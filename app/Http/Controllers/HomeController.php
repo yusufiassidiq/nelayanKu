@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Nelayan;
+use Validator;
+use Auth;
+use Session;
 
 class HomeController extends Controller
 {
@@ -28,5 +32,20 @@ class HomeController extends Controller
 
     public function tambahNelayanPage(){
         return view('tambah_nelayan');
+    }
+
+    public function tambahDataPage(){
+        $nelayans = Nelayan::all();
+        return view('tambah_data',compact('nelayans'));
+    }
+
+    public function storeNelayan(Request $request){
+        $nelayan = new Nelayan ([
+            'name' => $request->name,
+            'umur' => $request->umur,
+            'jenis' => $request->jenis,
+        ]);
+        $nelayan->save();
+        return redirect(route('tambahNelayanPage'))->with(['success' => 'Nelayan berhasil ditambahkan!']);
     }
 }

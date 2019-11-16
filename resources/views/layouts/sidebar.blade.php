@@ -81,7 +81,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{route('tambahDataPage')}}" class="nav-link">
                   <i class="nav-icon fas fa-edit"></i>
                   <p>Tambah Data</p>
                 </a>
@@ -101,11 +101,3 @@
     </div>
     <!-- /.sidebar -->
 </aside>
-
-<style>
-.main-sidebar{
-  height:100%;
-  width: 260px;
-  /* margin-bottom: auto; */
-  padding-bottom: 26%;
-</style>

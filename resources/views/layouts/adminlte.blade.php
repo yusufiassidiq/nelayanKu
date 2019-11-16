@@ -15,6 +15,14 @@
   <link rel="stylesheet" href="{{url('AdminLTE-3.0.0/dist/css/adminlte.css')}}">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  <!-- Select2 -->
+  <link rel="stylesheet" href="{{url('AdminLTE-3.0.0/plugins/select2/css/select2.min.css')}}">
+  <link rel="stylesheet" href="{{url('AdminLTE-3.0.0/plugins/select2-bootstrap4-theme/select2-bootstrap4.css')}}">
+  <!-- <link rel="stylesheet" href="{{url('AdminLTE-3.0.0/plugins/select2_dari_mytosca/dist/css/select2.min.css')}}"> -->
+  <!-- JavaScript -->
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <!-- Testing -->
+  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"> -->
 </head>
 <!--
 BODY TAG OPTIONS:
@@ -26,7 +34,7 @@ to get the desired effect
 |               | sidebar-mini                            |
 |---------------------------------------------------------|
 -->
-<body class="hold-transition sidebar-mini">
+<body class="hold-transition sidebar-mini layout-fixed ">
 <div class="wrapper">
 
   @include('layouts.header')
@@ -53,10 +61,14 @@ to get the desired effect
 <script src="{{url('AdminLTE-3.0.0/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 <!-- AdminLTE -->
 <script src="{{url('AdminLTE-3.0.0/dist/js/adminlte.js')}}"></script>
-
+<!-- Select2 -->
+<script src="{{url('AdminLTE-3.0.0/plugins/select2/js/select2.full.min.js')}}"></script>
+<!-- <script src="{{url('AdminLTE-3.0.0/plugins/select2_dari_mytosca/dist/js/select2.full.min.js')}}"></script> -->
 <!-- OPTIONAL SCRIPTS -->
 <script src="{{url('AdminLTE-3.0.0/plugins/chart.js/Chart.min.js')}}"></script>
 <script src="{{url('AdminLTE-3.0.0/dist/js/demo.js')}}"></script>
 <script src="{{url('AdminLTE-3.0.0/dist/js/pages/dashboard3.js')}}"></script>
+<script src="{{url('AdminLTE-3.0.0/dist/js/custom.js')}}"></script>
+
 </body>
 </html>

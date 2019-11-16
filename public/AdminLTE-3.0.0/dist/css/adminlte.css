@@ -73,6 +73,9 @@ body {
 [tabindex="-1"]:focus {
   outline: 0 !important;
 }
+.hide {
+  display: none !important;
+}
 
 hr {
   box-sizing: content-box;

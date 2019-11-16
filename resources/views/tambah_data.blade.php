@@ -49,7 +49,7 @@
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form role="form" method="POST" action="{{ route('storeNelayan') }}">
+              <form role="form" method="POST" action="{{ route('storeData') }}">
                 @csrf
                 <div class="card-body">
                   <div class="form-group">
@@ -97,7 +97,7 @@
                           @enderror
                         </td>
                         <td width="170" style="padding-right:20px">
-                          <input name="tambahIkan[0][jumlah]" type="number" class="form-control">
+                          <input name="tambahIkan[0][jumlah]" type="number" class="form-control" required>
                         </td>
                         <td>
                         <button type="button" style="padding-left:0.5rem;padding-right:0.5rem" name="tambah" id="tambah" class="tambah btn btn-success">Tambah</button>

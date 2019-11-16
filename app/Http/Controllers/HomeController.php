@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Nelayan;
+use App\DataTangkapan;
 use Validator;
 use Auth;
 use Session;
@@ -47,5 +48,25 @@ class HomeController extends Controller
         ]);
         $nelayan->save();
         return redirect(route('tambahNelayanPage'))->with(['success' => 'Nelayan berhasil ditambahkan!']);
+    }
+    public function storeData(Request $request)
+    {
+        $request->validate([
+            'nelayan' => 'required',
+            'tambahIkan.*.jenis' => 'required',
+            'tambahIkan.*.jumlah' => 'required',
+        ]);
+            
+        foreach ($request->tambahIkan as $key => $value) {
+            $value['nelayan']=$request->nelayan;
+            DataTangkapan::create($value);
+        }
+        
+        // dd($value);
+        // $data = new DataTangkapan ([
+        //     'nelayan' => $request->nelayan,
+        // ]);
+        // $data->save();
+        return back()->with('success', 'Record Created Successfully.');
     }
 }

@@ -53,12 +53,18 @@ class HomeController extends Controller
     {
         $request->validate([
             'nelayan' => 'required',
+            'alatTangkap'=> 'required',
+            'jenisKapal'=> 'required',
+            'dpi' => 'required',
             'tambahIkan.*.jenis' => 'required',
             'tambahIkan.*.jumlah' => 'required',
         ]);
             
         foreach ($request->tambahIkan as $key => $value) {
             $value['nelayan']=$request->nelayan;
+            $value['alattangkap']=$request->alatTangkap;
+            $value['jeniskapal']=$request->jenisKapal;
+            $value['dpi']=$request->dpi;
             DataTangkapan::create($value);
         }
         

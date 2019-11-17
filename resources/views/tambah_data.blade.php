@@ -67,13 +67,13 @@
                       @enderror
                   </div>
                   <!-- <div class="form-group"> -->
-                    <table id="tambahIkanTable">
-                      <tr>
-                        <th style="font-weight: normal;">Jenis Ikan</th>
-                        <th style="font-weight: normal;">Jumlah Ikan</th>
-                        <th style="font-weight: normal;"></th>
-                      </tr>
-                      <tr>
+                  <table id="tambahIkanTable">
+                    <tr>
+                      <th style="font-weight: normal;">Jenis Ikan</th>
+                      <th style="font-weight: normal;">Jumlah Ikan</th>
+                      <th style="font-weight: normal;"></th>
+                    </tr>
+                    <tr>
                         <td width="210" style="padding-right:20px" >
                           <select name="tambahIkan[0][jenis]" id="" class="form-control center select2bs4" required > 
                             <option selected="selected" hidden value="" disabled selected >Pilih Jenis Ikan</option> 
@@ -102,10 +102,75 @@
                         <td>
                         <button type="button" style="padding-left:0.5rem;padding-right:0.5rem" name="tambah" id="tambah" class="tambah btn btn-success">Tambah</button>
                         </td>
-                      </tr>
-                    </table>
-                    
+                    </tr>
+                  </table>
+                
+                  <div class="form-group" style="padding-top:15px;">
+                    <label for="alatTangkap">Alat Tangkap</label>
+                    <select name="alatTangkap" id="" class="form-control center select2bs4" required > 
+                        <option selected="selected" hidden value="" disabled selected >Pilih Alat Tangkap</option> 
+                      
+                        <option value="Pukat Tarik Udang Ganda">Pukat Tarik Udang Ganda</option>
+                        <option value="Pukat Tarik Udang Tunggal">Pukat Tarik Udang Tunggal</option>
+                        <option value="Pukat Pantai (Jaring Arad)">Pukat Pantai (Jaring Arad)</option>
+                        <option value="Pukat Cincin">Pukat Cincin</option>
+                        <option value="Jaring Insang Hanyut">Jaring Insang Hanyut</option>
+                        <option value="Jaring Klitik">Jaring Klitik</option>
+                        <option value="Jaring Insang Tetap">Jaring Insang Tetap</option>
+                        <option value="Bagan Tancap">Bagan Tancap</option>
+                        <option value="Jaring Angkat Lainnya">Jaring Angkat Lainnya</option>
+                        <option value="Rawai Tetap">Rawai Tetap</option>
+                        <option value="Pancing Tonda">Pancing Tonda</option>
+                        <option value="Pancing Cumi">Pancing Cumi</option>
+                        <option value="Pancing Lainnya">Pancing Lainnya</option>
+                        <option value="Sero (Termasuk Kelong)">Sero (Termasuk Kelong)</option>
+                        <option value="Bubu (Termasuk Bubu Ambal)">Bubu (Termasuk Bubu Ambal)</option>
+                        <option value="Perangkap Lainnya">Perangkap Lainnya</option>
+                        <option value="Alat Penangkap Kepiting">Alat Penangkap Kepiting</option>
+                        <option value="Garpu dan Tombak, dan lain-lain">Garpu dan Tombak, dan lain-lain</option>
+                      </select> 
+                      @error('alatTangkap')
+                          <span class="invalid-feedback" role="alert">
+                              <strong>{{ $message }}</strong>
+                          </span>
+                      @enderror
+                  </div>
 
+                  <div class="form-group" >
+                    <label for="jenisKapal">Armada Kapal</label>
+                    <select name="jenisKapal" id="" class="form-control center select2bs4" required > 
+                        <option selected="selected" hidden value="" disabled selected >Pilih Armada Kapal</option> 
+                      
+                        <option value="Perahu Papan Jukung">Perahu Papan Jukung</option>
+                        <option value="Perahu Papan Kecil">Perahu Papan Kecil</option>
+                        <option value="Perahu Papan Sedang">Perahu Papan Sedang</option>
+                        <option value="Perahu Papan Besar">Perahu Papan Besar</option>
+                        <option value="Motor Tempel">Motor Tempel</option>
+                        <option value="Kapal Motor 0-5 GT">Kapal Motor 0-5 GT</option>
+                        <option value="Kapal Motor 5-10 GT">Kapal Motor 5-10 GT</option>
+                        <option value="Kapal Motor 10-20 GT">Kapal Motor 10-20 GT</option>
+                        <option value="Kapal Motor 20-30 GT">Kapal Motor 20-30 GT</option>
+                        <option value="Kapal Motor 30-50 GT">Kapal Motor 30-50 GT</option>
+                        <option value="Kapal Motor 50-100 GT">Kapal Motor 50-100 GT</option>
+                        <option value="Kapal Motor 100-200 GT">Kapal Motor 100-200 GT</option>
+                        <option value="Kapal Motor >200 GT">Kapal Motor >200 GT</option>
+                      </select> 
+                      @error('jenisKapal')
+                          <span class="invalid-feedback" role="alert">
+                              <strong>{{ $message }}</strong>
+                          </span>
+                      @enderror
+                    </div>
+
+                    <div class="form-group" >
+                    <label for="dpi">Daerah Penangkapan Ikan</label>
+                    <input id="dpi" type="text" class="form-control @error('dpi') is-invalid @enderror" name="dpi" value="{{ old('dpi') }}" required >
+                      @error('dpi')
+                          <span class="invalid-feedback" role="alert">
+                              <strong>{{ $message }}</strong>
+                          </span>
+                      @enderror
+                    </div>
                   <!-- </div> -->
                 </div>
                 <!-- /.card-body -->

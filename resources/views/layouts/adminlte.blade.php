@@ -23,6 +23,8 @@
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <!-- Testing -->
   <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"> -->
+  <!-- DataTables -->
+  <link rel="stylesheet" href="{{url('AdminLTE-3.0.0/plugins/datatables-bs4/css/dataTables.bootstrap4.css')}}">
 </head>
 <!--
 BODY TAG OPTIONS:
@@ -64,11 +66,15 @@ to get the desired effect
 <!-- Select2 -->
 <script src="{{url('AdminLTE-3.0.0/plugins/select2/js/select2.full.min.js')}}"></script>
 <!-- <script src="{{url('AdminLTE-3.0.0/plugins/select2_dari_mytosca/dist/js/select2.full.min.js')}}"></script> -->
+<!-- DataTables -->
+<script src="{{url('AdminLTE-3.0.0/plugins/datatables/jquery.dataTables.js')}}"></script>
+<script src="{{url('AdminLTE-3.0.0/plugins/datatables-bs4/js/dataTables.bootstrap4.js')}}"></script>
 <!-- OPTIONAL SCRIPTS -->
 <script src="{{url('AdminLTE-3.0.0/plugins/chart.js/Chart.min.js')}}"></script>
 <script src="{{url('AdminLTE-3.0.0/dist/js/demo.js')}}"></script>
 <script src="{{url('AdminLTE-3.0.0/dist/js/pages/dashboard3.js')}}"></script>
 <script src="{{url('AdminLTE-3.0.0/dist/js/custom.js')}}"></script>
+
 
 </body>
 </html>

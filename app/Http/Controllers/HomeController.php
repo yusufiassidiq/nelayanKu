@@ -8,6 +8,8 @@ use App\DataTangkapan;
 use Validator;
 use Auth;
 use Session;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\DataExport;
 
 class HomeController extends Controller
 {
@@ -75,4 +77,14 @@ class HomeController extends Controller
         // $data->save();
         return back()->with('success', 'Record Created Successfully.');
     }
+
+    public function listDataPage(){
+        $datas = DataTangkapan::all();
+        return view('list_data',compact('datas'));
+    }
+
+    public function export_excel()
+	{
+		return Excel::download(new DataExport, 'Data Tangkapan.xlsx');
+	}
 }

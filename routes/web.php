@@ -22,5 +22,7 @@ Route::get('/tambah_nelayan','HomeController@tambahNelayanPage')->name('tambahNe
 Route::post('/storeNelayan','HomeController@storeNelayan')->name('storeNelayan');
 Route::get('/tambah_data','HomeController@tambahDataPage')->name('tambahDataPage');
 Route::post('/storeData','HomeController@storeData')->name('storeData');
+Route::get('/list_data','HomeController@listDataPage')->name('listDataPage');
+Route::get('/data/export_excel', 'HomeController@export_excel')->name('exportData');
 
 Route::get('test', 'TestController@index');

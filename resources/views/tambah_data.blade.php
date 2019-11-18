@@ -199,11 +199,7 @@
   });
 }, 3000);
 </script>
-<script>
-$( "#qaz" ).click(function() {
-  $( "tr" ).remove();
-});
-</script>
+
 <script type="text/javascript">
    
    var i = 0;

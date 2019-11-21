@@ -10,6 +10,7 @@ use Auth;
 use Session;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\DataExport;
+use DB;
 
 class HomeController extends Controller
 {
@@ -40,6 +41,18 @@ class HomeController extends Controller
     public function tambahDataPage(){
         $nelayans = Nelayan::all();
         return view('tambah_data',compact('nelayans'));
+    }
+
+    public function listDataPage(){
+        $datas              = DataTangkapan::orderBy('id','DESC')->get();
+        $totalNelayan       = DataTangkapan::distinct('nelayan')->count('nelayan');
+        $totalData          = DataTangkapan::count();
+        $jumlahTangkapan    = DataTangkapan::sum('jumlah');
+        $dataNelayanTerbaik = DataTangkapan::select('nelayan',DB::raw('sum(jumlah)'))->groupBy('nelayan')->get();
+        $sumJumlah          = $dataNelayanTerbaik->max('sum(jumlah)');
+        $nelayanTerbaik     = $dataNelayanTerbaik->where('sum(jumlah)',$sumJumlah)->first()['nelayan'];
+        // dd($nelayanTerbaik);
+        return view('list_data',compact('datas','totalNelayan','totalData','jumlahTangkapan','nelayanTerbaik'));
     }
 
     public function storeNelayan(Request $request){
@@ -76,11 +89,6 @@ class HomeController extends Controller
         // ]);
         // $data->save();
         return back()->with('success', 'Record Created Successfully.');
-    }
-
-    public function listDataPage(){
-        $datas = DataTangkapan::all();
-        return view('list_data',compact('datas'));
     }
 
     public function export_excel()

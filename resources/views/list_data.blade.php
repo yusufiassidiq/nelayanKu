@@ -23,7 +23,84 @@
     <div class="container-fluid">
         <div class="row-md-12 justify-content-center">
             <div class="col-md-12 span12" style="float: none; margin: 0 auto;">
+            
+            <div class="card card-primary">
+            <div class="card-body">
+                    <!-- Small Box (Stat card) -->
+                    <h5 class="mb-2 ">Data Insight</h5>
+                        <div class="row">
+                          <div class="col-lg-3 col-6">
+                            <!-- small card -->
+                            <div class="small-box bg-info">
+                              <div class="inner">
+                                <h3>{{$totalNelayan}} Orang</h3>
 
+                                <p>Total Nelayan</p>
+                              </div>
+                              <div class="icon">
+                                <i class="fas fa-ship"></i>
+                              </div>
+                              <a href="#" class="small-box-footer">
+                                <!-- More info <i class="fas fa-arrow-circle-right"></i> -->
+                              </a>
+                            </div>
+                          </div>
+                          <!-- ./col -->
+                          <div class="col-lg-3 col-6">
+                            <!-- small card -->
+                            <div class="small-box bg-success">
+                              <div class="inner">
+                                <h3>{{$totalData}} Baris</h3>
+
+                                <p>Total Data</p>
+                              </div>
+                              <div class="icon">
+                                <i class="ion ion-stats-bars"></i>
+                              </div>
+                              <a href="#" class="small-box-footer">
+                                <!-- More info <i class="fas fa-arrow-circle-right"></i> -->
+                              </a>
+                            </div>
+                          </div>
+                          <!-- ./col -->
+                          <div class="col-lg-3 col-6">
+                            <!-- small card -->
+                            <div class="small-box bg-warning">
+                              <div class="inner">
+                                <h3>{{$jumlahTangkapan}} Ton</h3>
+
+                                <p>Jumlah Tangkapan</p>
+                              </div>
+                              <div class="icon">
+                                <i class="fas fa-balance-scale"></i>
+                              </div>
+                              <a href="#" class="small-box-footer">
+                                <!-- More info <i class="fas fa-arrow-circle-right"></i> -->
+                              </a>
+                            </div>
+                          </div>
+                          <!-- ./col -->
+                          <div class="col-lg-3 col-6">
+                            <!-- small card -->
+                            <div class="small-box bg-danger">
+                              <div class="inner">
+                                <h3>{{$nelayanTerbaik}}</h3>
+
+                                <p>Nelayan Terbaik</p>
+                              </div>
+                              <div class="icon">
+                                <i class="fas fa-chart-pie"></i>
+                              </div>
+                              <a href="#" class="small-box-footer">
+                                <!-- More info <i class="fas fa-arrow-circle-right"></i> -->
+                              </a>
+                            </div>
+                          </div>
+                          <!-- ./col -->
+                        </div>
+                    <!-- /.row -->
+                </div>
+            </div>
             <!-- general form elements -->
             <div class="card card-primary">
               <!-- <div class="card-header">
@@ -33,6 +110,8 @@
               <!-- form start -->
               <!-- <form role="form" method="POST" action="{{ route('storeData') }}">
                 @csrf -->
+                
+
                 <div class="card-body">
                 
                 <table id="datatable2" class="table table-bordered table-striped">

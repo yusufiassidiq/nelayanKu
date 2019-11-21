@@ -51,6 +51,7 @@ class HomeController extends Controller
         $dataNelayanTerbaik = DataTangkapan::select('nelayan',DB::raw('sum(jumlah)'))->groupBy('nelayan')->get();
         $sumJumlah          = $dataNelayanTerbaik->max('sum(jumlah)');
         $nelayanTerbaik     = $dataNelayanTerbaik->where('sum(jumlah)',$sumJumlah)->first()['nelayan'];
+        if($nelayanTerbaik == NULL) $nelayanTerbaik = "-";
         // dd($nelayanTerbaik);
         return view('list_data',compact('datas','totalNelayan','totalData','jumlahTangkapan','nelayanTerbaik'));
     }

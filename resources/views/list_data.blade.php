@@ -101,6 +101,13 @@
                     <!-- /.row -->
                 </div>
             </div>
+            <div class="card card-primary">
+              <div class="card-body">
+                <div class="chart">
+                  <canvas id="bar-chart" style="height: 400px; max-height: 400px;"></canvas>
+                </div>
+              </div>
+            </div>
             <!-- general form elements -->
             <div class="card card-primary">
               <!-- <div class="card-header">
@@ -163,10 +170,37 @@
             </div>
             <!-- /.card -->
             </div>
+            
         </div>
     </div>
 <!-- /.content-wrapper -->
 </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+<script>
+// Bar chart
+new Chart(document.getElementById("bar-chart"), {
+    type: 'bar',
+    data: {
+      labels: ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus",
+       "September", "Oktober", "November", "Desember"],
+      datasets: [
+        {
+          label: "Jumlah (ton)",
+          backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850","#f5c57d","#a230c2","#d12d2a","#7471d9","#396639",
+          "#D6B8CE","#D6D640"],
+          data: [2478,5267,734,8784,433,10100,3214,7362,8352,4356,1573,3125]
+        }
+      ]
+    },
+    options: {
+      legend: { display: false },
+      title: {
+        display: true,
+        text: 'Grafik Jumlah Tangkapan Dalam Setahun'
+      }
+    }
+});
+</script>
 <style>
 .tes {
   padding-left: 10px;

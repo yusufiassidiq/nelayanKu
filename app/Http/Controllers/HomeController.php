@@ -11,6 +11,7 @@ use Session;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\DataExport;
 use DB;
+use Carbon\Carbon;
 
 class HomeController extends Controller
 {
@@ -52,7 +53,11 @@ class HomeController extends Controller
         $sumJumlah          = $dataNelayanTerbaik->max('sum(jumlah)');
         $nelayanTerbaik     = $dataNelayanTerbaik->where('sum(jumlah)',$sumJumlah)->first()['nelayan'];
         if($nelayanTerbaik == NULL) $nelayanTerbaik = "-";
-        // dd($nelayanTerbaik);
+        $month = Carbon::now()->format('m');
+        $year = Carbon::now()->format('Y');
+        $tanggal = Carbon::now();
+        $jumlahperbulan = DataTangkapan::select('created_at', DB::raw('count(*) as jumlah'))->whereMonth('created_at', $month)->whereYear('created_at',$year)->groupBy('created_at')->get();
+        // dd($tanggal);
         return view('list_data',compact('datas','totalNelayan','totalData','jumlahTangkapan','nelayanTerbaik'));
     }
 

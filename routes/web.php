@@ -15,6 +15,9 @@ Route::get('/', function () {
     if(!Auth::check()){
 		return redirect('/login');
 	 }
+	 if(Auth::check()){
+		 return redirect('/list_data');
+	 }
 });
 
 Auth::routes();

@@ -135,6 +135,7 @@
                       <th>Alat Tangkap</th>
                       <th>Jenis Kapal</th>
                       <th>Daerah Penangkapan Ikan</th>
+                      <th>Tanggal Penangkapan</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -149,6 +150,7 @@
                       <td>{{$data->alattangkap}}</td>
                       <td>{{$data->jeniskapal}}</td>
                       <td>{{$data->dpi}}</td>
+                      <td>{{$data->tanggal}}</td>
                     </tr>
                         @endforeach
                     </tbody>
@@ -178,7 +180,16 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
 <script>
 // Bar chart
-new Chart(document.getElementById("bar-chart"), {
+  var jumlahperbulan = {!! json_encode($jumlahperbulan) !!};
+  var tahun = {!!json_encode($year) !!};
+  var jumlah = new Array(12).fill(0);
+
+  for (var i = 0; i < jumlahperbulan.length; i++){
+    var dt = jumlahperbulan[i].tanggal.split("-");
+    console.log(dt);
+    jumlah[parseInt(dt[1])-1] = jumlahperbulan[i].jumlah;
+  }
+  new Chart(document.getElementById("bar-chart"), {
     type: 'bar',
     data: {
       labels: ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus",
@@ -188,7 +199,8 @@ new Chart(document.getElementById("bar-chart"), {
           label: "Jumlah (ton)",
           backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850","#f5c57d","#a230c2","#d12d2a","#7471d9","#396639",
           "#D6B8CE","#D6D640"],
-          data: [2478,5267,734,8784,433,10100,3214,7362,8352,4356,1573,3125]
+          // data: [2478,5267,734,8784,433,10100,3214,7362,8352,4356,1573,3125]
+          data : jumlah,
         }
       ]
     },
@@ -196,7 +208,7 @@ new Chart(document.getElementById("bar-chart"), {
       legend: { display: false },
       title: {
         display: true,
-        text: 'Grafik Jumlah Tangkapan Dalam Setahun'
+        text: 'Grafik Jumlah Tangkapan Pada Tahun '+tahun,
       }
     }
 });

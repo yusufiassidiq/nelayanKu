@@ -53,12 +53,9 @@ class HomeController extends Controller
         $sumJumlah          = $dataNelayanTerbaik->max('sum(jumlah)');
         $nelayanTerbaik     = $dataNelayanTerbaik->where('sum(jumlah)',$sumJumlah)->first()['nelayan'];
         if($nelayanTerbaik == NULL) $nelayanTerbaik = "-";
-        $month = Carbon::now()->format('m');
         $year = Carbon::now()->format('Y');
-        $tanggal = Carbon::now();
-        $jumlahperbulan = DataTangkapan::select('created_at', DB::raw('count(*) as jumlah'))->whereMonth('created_at', $month)->whereYear('created_at',$year)->groupBy('created_at')->get();
-        // dd($tanggal);
-        return view('list_data',compact('datas','totalNelayan','totalData','jumlahTangkapan','nelayanTerbaik'));
+        $jumlahperbulan = DataTangkapan::select('tanggal', DB::raw('sum(jumlah) as jumlah'))->whereYear('tanggal',$year)->groupBy('tanggal')->get();
+        return view('list_data',compact('year','jumlahperbulan','datas','totalNelayan','totalData','jumlahTangkapan','nelayanTerbaik'));
     }
 
     public function storeNelayan(Request $request){
@@ -80,20 +77,16 @@ class HomeController extends Controller
             'tambahIkan.*.jenis' => 'required',
             'tambahIkan.*.jumlah' => 'required',
         ]);
-            
+
         foreach ($request->tambahIkan as $key => $value) {
             $value['nelayan']=$request->nelayan;
             $value['alattangkap']=$request->alatTangkap;
             $value['jeniskapal']=$request->jenisKapal;
             $value['dpi']=$request->dpi;
+            $value['tanggal'] = Carbon::now()->format('Y-m-d');
             DataTangkapan::create($value);
         }
-        
-        // dd($value);
-        // $data = new DataTangkapan ([
-        //     'nelayan' => $request->nelayan,
-        // ]);
-        // $data->save();
+
         return back()->with('success', 'Record Created Successfully.');
     }
 

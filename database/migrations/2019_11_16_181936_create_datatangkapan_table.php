@@ -21,6 +21,7 @@ class CreateDatatangkapanTable extends Migration
             $table->string('alattangkap')->nullable();
             $table->string('jeniskapal')->nullable();
             $table->string('dpi')->nullable();
+            $table->date('tanggal')->nullable();
             $table->timestamps();
         });
     }

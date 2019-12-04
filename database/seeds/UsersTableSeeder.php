@@ -20,5 +20,13 @@ class UsersTableSeeder extends Seeder
         ]);
         $user1->save();
 
+        $user2 = new User([
+        	'id' => '2',
+        	'name' => 'Gilar',
+        	'email' => 'gilar@gmail.com',
+            'password' => Hash::make('123123'),
+        ]);
+        $user2->save();
+
     }
 }

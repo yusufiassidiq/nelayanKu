@@ -88,7 +88,7 @@ class HomeController extends Controller
             $value['tanggal'] = Carbon::now()->format('Y-m-d');
             DataTangkapan::create($value);
         }
-
+        
         return back()->with('success', 'Record Created Successfully.');
     }
 

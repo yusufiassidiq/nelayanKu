@@ -135,6 +135,7 @@
                       <th>Alat Tangkap</th>
                       <th>Jenis Kapal</th>
                       <th>Daerah Penangkapan Ikan</th>
+                      <th>Tempat Pendaratan Ikan</th>
                       <th>Tanggal Penangkapan</th>
                     </tr>
                     </thead>
@@ -150,6 +151,7 @@
                       <td>{{$data->alattangkap}}</td>
                       <td>{{$data->jeniskapal}}</td>
                       <td>{{$data->dpi}}</td>
+                      <td>{{$data->tempatpendaratanikan}}</td>
                       <td>{{$data->tanggal}}</td>
                     </tr>
                         @endforeach

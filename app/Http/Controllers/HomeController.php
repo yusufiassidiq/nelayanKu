@@ -73,6 +73,7 @@ class HomeController extends Controller
             'nelayan' => 'required',
             'alatTangkap'=> 'required',
             'jenisKapal'=> 'required',
+            'tempatpendaratanikan'=> 'required',
             'dpi' => 'required',
             'tambahIkan.*.jenis' => 'required',
             'tambahIkan.*.jumlah' => 'required',
@@ -83,6 +84,7 @@ class HomeController extends Controller
             $value['alattangkap']=$request->alatTangkap;
             $value['jeniskapal']=$request->jenisKapal;
             $value['dpi']=$request->dpi;
+            $value['tempatpendaratanikan']=$request->tempatpendaratanikan;
             $value['tanggal'] = Carbon::now()->format('Y-m-d');
             DataTangkapan::create($value);
         }

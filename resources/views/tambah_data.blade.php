@@ -171,6 +171,16 @@
                           </span>
                       @enderror
                     </div>
+
+                    <div class="form-group" >
+                    <label for="tempatpendaratanikan">Tempat Pendaratan Ikan</label>
+                    <input id="tempatpendaratanikan" type="text" class="form-control @error('tempatpendaratanikan') is-invalid @enderror" name="tempatpendaratanikan" value="{{ old('tempatpendaratanikan') }}" required >
+                      @error('tempatpendaratanikan')
+                          <span class="invalid-feedback" role="alert">
+                              <strong>{{ $message }}</strong>
+                          </span>
+                      @enderror
+                    </div>
                   <!-- </div> -->
                 </div>
                 <!-- /.card-body -->

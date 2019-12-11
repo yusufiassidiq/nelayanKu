@@ -16,6 +16,8 @@ class CreateDatatangkapanTable extends Migration
         Schema::create('datatangkapan', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('nelayan')->nullable();
+            $table->string('umurnelayan')->nullable();
+            $table->string('jenisnelayan')->nullable();
             $table->string('jenis');
             $table->integer('jumlah');
             $table->string('alattangkap')->nullable();

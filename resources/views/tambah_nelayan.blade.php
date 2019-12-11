@@ -84,8 +84,8 @@
                                     <select name="jenis" id="" class="form-control center" required > 
                                         <option selected="selected" hidden value="" disabled selected >Pilih Jenis</option> 
                                        
-                                        <option value="penuh">Penuh</option>
-                                        <option value="sampingan">Sampingan</option>
+                                        <option value="Penuh">Penuh</option>
+                                        <option value="Sampingan">Sampingan</option>
                                      
                                        
                                     </select> 

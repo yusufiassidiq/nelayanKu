@@ -54,10 +54,10 @@
                 <div class="card-body">
                   <div class="form-group">
                     <label for="nelayan">Nelayan</label>
-                    <select name="nelayan" id="" class="form-control center select2bs4" required > 
+                    <select name="nelayan" id="nelayan" class="form-control center select2bs4" required > 
                         <option selected="selected" hidden value="" disabled selected >Pilih Nelayan</option> 
                       @foreach ($nelayans as $nelayan)
-                        <option value="{{$nelayan->name}}">{{$nelayan->name}}</option>
+                        <option value="{{$nelayan->name}}" data-umur="{{$nelayan->umur}}" data-jenis="{{$nelayan->jenis}}">{{$nelayan->name}}</option>
                       @endforeach
                       </select> 
                       @error('nelayan')
@@ -66,6 +66,26 @@
                           </span>
                       @enderror
                   </div>
+
+                  <div class="form-group" >
+                    <label for="umur">Umur</label>
+                    <input readonly id="umur" type="text" value="{{ old('umur') }}" class="form-control @error('umur') is-invalid @enderror" name="umur" required >
+                      @error('umur')
+                          <span class="invalid-feedback" role="alert">
+                              <strong>{{ $message }}</strong>
+                          </span>
+                      @enderror
+                  </div>
+                  <div class="form-group" >
+                    <label for="jenisNelayan">Jenis Nelayan</label>
+                    <input readonly id="jenisNelayan" type="text" value="{{ old('jenisNelayan') }}" class="form-control @error('jenisNelayan') is-invalid @enderror" name="jenisNelayan" required >
+                      @error('jenisNelayan')
+                          <span class="invalid-feedback" role="alert">
+                              <strong>{{ $message }}</strong>
+                          </span>
+                      @enderror
+                  </div>
+
                   <!-- <div class="form-group"> -->
                   <table id="tambahIkanTable">
                     <tr>
@@ -209,7 +229,19 @@
   });
 }, 3000);
 </script>
+<script>
+$(function() {
+   $('#nelayan').on('change', function(){
 
+       var umur = $(this).children('option:selected').data('umur');
+       var jenis = $(this).children('option:selected').data('jenis');
+      //  $('#umur').val(umur);
+      //  $('#jenisNelayan').val(jenis);
+       document.getElementById("umur").value = umur;
+       document.getElementById("jenisNelayan").value = jenis;
+   });
+});
+</script>
 <script type="text/javascript">
    
    var i = 0;

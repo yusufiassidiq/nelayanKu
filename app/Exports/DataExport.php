@@ -21,12 +21,15 @@ class DataExport implements FromCollection, WithHeadings, ShouldAutoSize
     { 
         return ['Nomor',
                 'Nelayan',
+                'Umur Nelayan',
+                'Jenis Nelayan',
                 'Jenis Ikan',
                 'Jumlah',
                 'Alat Tangkap',
                 'Jenis Kapal',
                 'Daerah Penangkapan Ikan',
                 'Tanggal Penangkapan',
+                'Tempat Pendaratan Ikan',
                 'Created at',
                 'Updated at',
     ];

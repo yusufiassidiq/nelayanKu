@@ -8,5 +8,5 @@ class DataTangkapan extends Model
 {
     protected $table = 'datatangkapan';
 
-    protected $fillable = ['tempatpendaratanikan','nelayan','jenis','jumlah','jeniskapal','alattangkap','dpi','tanggal'];
+    protected $fillable = ['umurnelayan','jenisnelayan','tempatpendaratanikan','nelayan','jenis','jumlah','jeniskapal','alattangkap','dpi','tanggal'];
 }

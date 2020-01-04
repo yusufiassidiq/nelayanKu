@@ -20,8 +20,12 @@ class CreateDatatangkapanTable extends Migration
             $table->string('jenisnelayan')->nullable();
             $table->string('jenis');
             $table->integer('jumlah');
+            $table->integer('bobot');
             $table->string('alattangkap')->nullable();
             $table->string('jeniskapal')->nullable();
+            $table->string('namakapal')->nullable();
+            $table->string('nokapal')->nullable();
+            $table->integer('jumlahABK')->nullable();
             $table->string('dpi')->nullable();
             $table->date('tanggal')->nullable();
             $table->string('tempatpendaratanikan')->nullable();

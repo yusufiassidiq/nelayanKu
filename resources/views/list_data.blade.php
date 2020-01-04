@@ -47,8 +47,12 @@
                       <th>Nelayan</th>
                       <th>Jenis Ikan</th>
                       <th>Jumlah</th>
+                      <th>Bobot</th>
                       <th>Alat Tangkap</th>
                       <th>Jenis Kapal</th>
+                      <th>Nama Kapal</th>
+                      <th>Nomor Kapal</th>
+                      <th>Jumlah ABK</th>
                       <th>Daerah Penangkapan Ikan</th>
                       <th>Tempat Pendaratan Ikan</th>
                       <th>Tanggal Penangkapan</th>
@@ -63,8 +67,12 @@
                       <td>{{$data->nelayan}}</td>
                       <td>{{$data->jenis}}</td>
                       <td>{{$data->jumlah}}</td>
+                      <td>{{$data->bobot}}</td>
                       <td>{{$data->alattangkap}}</td>
                       <td>{{$data->jeniskapal}}</td>
+                      <td>{{$data->namakapal}}</td>
+                      <td>{{$data->nokapal}}</td>
+                      <td>{{$data->jumlahABK}}</td>
                       <td>{{$data->dpi}}</td>
                       <td>{{$data->tempatpendaratanikan}}</td>
                       <td>{{$data->tanggal}}</td>

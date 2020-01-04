@@ -78,18 +78,25 @@ class HomeController extends Controller
             'nelayan' => 'required',
             'alatTangkap'=> 'required',
             'jenisKapal'=> 'required',
+            'namaKapal'=> 'required',
+            'noKapal'=> 'required',
+            'jumlahABK'=> 'required',
             'tempatpendaratanikan'=> 'required',
             'dpi' => 'required',
             'jenisNelayan' => 'required',
             'umur' => 'required',
             'tambahIkan.*.jenis' => 'required',
             'tambahIkan.*.jumlah' => 'required',
+            'tambahIkan.*.bobot' => 'required',
         ]);
 
         foreach ($request->tambahIkan as $key => $value) {
             $value['nelayan']=$request->nelayan;
             $value['alattangkap']=$request->alatTangkap;
             $value['jeniskapal']=$request->jenisKapal;
+            $value['namakapal']=$request->namaKapal;
+            $value['nokapal']=$request->noKapal;
+            $value['jumlahABK']=$request->jumlahABK;
             $value['jenisnelayan']=$request->jenisNelayan;
             $value['umurnelayan']=$request->umur;
             $value['dpi']=$request->dpi;

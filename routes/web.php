@@ -16,7 +16,7 @@ Route::get('/', function () {
 		return redirect('/login');
 	 }
 	 if(Auth::check()){
-		 return redirect('/list_data');
+		 return redirect('/dashboard');
 	 }
 });
 

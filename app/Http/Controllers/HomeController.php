@@ -41,15 +41,15 @@ class HomeController extends Controller
 
     public function dashboardPage(){
         $totalNelayan       = DataTangkapan::distinct('nelayan')->count('nelayan');
-        $totalData          = DataTangkapan::count();
+        $bobotTangkapan     = DataTangkapan::sum('bobot');
         $jumlahTangkapan    = DataTangkapan::sum('jumlah');
         $dataNelayanTerbaik = DataTangkapan::select('nelayan',DB::raw('sum(jumlah)'))->groupBy('nelayan')->get();
-        $sumJumlah          = $dataNelayanTerbaik->max('sum(jumlah)');
-        $nelayanTerbaik     = $dataNelayanTerbaik->where('sum(jumlah)',$sumJumlah)->first()['nelayan'];
+        $sumBobot           = $dataNelayanTerbaik->max('sum(bobot)');
+        $nelayanTerbaik     = $dataNelayanTerbaik->where('sum(bobot)',$sumBobot)->first()['nelayan'];
         if($nelayanTerbaik == NULL) $nelayanTerbaik = "-";
         $year = Carbon::now()->format('Y');
         $jumlahperbulan = DataTangkapan::select('tanggal', DB::raw('sum(jumlah) as jumlah'))->whereYear('tanggal',$year)->groupBy('tanggal')->get();
-        return view('dashboard',compact('year','jumlahperbulan','totalNelayan','totalData','jumlahTangkapan','nelayanTerbaik'));
+        return view('dashboard',compact('year','jumlahperbulan','totalNelayan','bobotTangkapan','jumlahTangkapan','nelayanTerbaik'));
     }
 
     public function tambahDataPage(){
@@ -86,11 +86,16 @@ class HomeController extends Controller
             'jenisNelayan' => 'required',
             'umur' => 'required',
             'tambahIkan.*.jenis' => 'required',
-            'tambahIkan.*.jumlah' => 'required',
-            'tambahIkan.*.bobot' => 'required',
+            // 'tambahIkan.*.jumlah' => 'required',
+            // 'tambahIkan.*.bobot' => 'required',
         ]);
 
         foreach ($request->tambahIkan as $key => $value) {
+            if ($value['jenis']=="Lainnya"){
+                $value['jenis'] = $request->jenisIkanLain;
+                $value['jumlah'] = $request->jumlahIkanLain;
+                $value['bobot'] = $request->bobotIkanLain;
+            }
             $value['nelayan']=$request->nelayan;
             $value['alattangkap']=$request->alatTangkap;
             $value['jeniskapal']=$request->jenisKapal;

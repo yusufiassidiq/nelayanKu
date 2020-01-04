@@ -50,9 +50,9 @@
                             <!-- small card -->
                             <div class="small-box bg-success">
                               <div class="inner">
-                                <h3>{{$totalData}} Baris</h3>
+                                <h3>{{$bobotTangkapan}} Ton</h3>
 
-                                <p>Total Data</p>
+                                <p>Total Bobot Tangkapan</p>
                               </div>
                               <div class="icon">
                                 <i class="ion ion-stats-bars"></i>
@@ -67,9 +67,9 @@
                             <!-- small card -->
                             <div class="small-box bg-warning">
                               <div class="inner">
-                                <h3>{{$jumlahTangkapan}} Ton</h3>
+                                <h3>{{$jumlahTangkapan}} Ekor</h3>
 
-                                <p>Jumlah Tangkapan</p>
+                                <p>Total Jumlah Tangkapan</p>
                               </div>
                               <div class="icon">
                                 <i class="fas fa-balance-scale"></i>

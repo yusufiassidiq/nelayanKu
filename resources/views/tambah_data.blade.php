@@ -90,14 +90,14 @@
                   <table id="tambahIkanTable">
                     <tr>
                       <th style="font-weight: normal;">Jenis TCT</th>
-                      <th style="font-weight: normal;">Jumlah Ikan</th>
-                      <th style="font-weight: normal;">Bobot Ikan</th>
+                      <th id="hide3" style="font-weight: normal;">Jumlah Ikan</th>
+                      <th id="hide4" style="font-weight: normal;">Bobot Ikan</th>
                       <th style="font-weight: normal;"></th>
                     </tr>
                     <tr>
                         <td width="210"  style="padding-right:0px"  >
-                          <select name="tambahIkan[0][jenis]" id="" class="form-control center select2bs4" required > 
-                            <option selected="selected" hidden value="" disabled selected >Pilih Jenis Ikan</option> 
+                          <select name="tambahIkan[0][jenis]" id="pilihanikan" class="form-control pilihanikan center select2bs4" required > 
+                            <option selected="selected" hidden value="Lainnya" disabled selected>Pilih Jenis Ikan</option> 
                             <option value="Tongkol Abu-Abu">Tongkol Abu-Abu</option>
                             <option value="Tongkol Komo">Tongkol Komo</option>
                             <option value="Tongkol Krai">Tongkol Krai</option>
@@ -110,6 +110,7 @@
                             <option value="Tuna Sirip Biru Selatan">Tuna Sirip Biru Selatan</option>
                             <option value="Tenggiri">Tenggiri</option>
                             <option value="Tenggiri Papan">Tenggiri Papan</option>
+                            <option value="Lainnya">Lainnya</option>
                           </select> 
                           @error('tambahIkan')
                               <span class="invalid-feedback" role="alert">
@@ -117,18 +118,20 @@
                               </span>
                           @enderror
                         </td>
-                        <td width="170" style="padding-right:20px">
-                          <input name="tambahIkan[0][jumlah]" type="number" class="form-control" required>
+                        <td id="hide1" width="170" style="padding-right:20px">
+                          <input name="tambahIkan[0][jumlah]" type="number" class="form-control" >
                         </td>
-                        <td width="170" style="padding-right:20px">
-                          <input name="tambahIkan[0][bobot]" type="number" class="form-control" required>
+                        <td id="hide2" width="170" style="padding-right:20px">
+                          <input name="tambahIkan[0][bobot]" type="number" class="form-control" >
                         </td>
                         <td>
                         <button type="button" style="padding-left:0.5rem;padding-right:0.5rem" name="tambah" id="tambah" class="tambah btn btn-success">Tambah</button>
                         </td>
                     </tr>
                   </table>
-                
+                  <div id="div1"></div>
+                  
+
                   <div class="form-group" style="padding-top:15px;">
                     <label for="alatTangkap">Alat Tangkap</label>
                     <select name="alatTangkap" id="" class="form-control center select2bs4" required > 
@@ -265,12 +268,32 @@
 </script>
 <script>
 $(function() {
+  $('#pilihanikan').on("change", function(){
+    console.log("tes");
+    if($(this).val() == "Lainnya"){
+        document.getElementById('div1').innerHTML='<table  ><tr><th style="font-weight: normal;">Jenis TCT</th><th style="font-weight: normal;">Jumlah Ikan</th><th style="font-weight: normal;">Bobot Ikan</th></tr><tr><td style="padding-right:10px" ><input id="jenisIkanLain" type="text" class="form-control @error('jenisIkanLain') is-invalid @enderror" name="jenisIkanLain" value="{{ old('jenisIkanLain') }}" required >@error('jenisIkanLain')<span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>@enderror</td><td style="padding-right:10px" ><input id="jumlahIkanLain" type="number" class="form-control @error('jumlahIkanLain') is-invalid @enderror" name="jumlahIkanLain" value="{{ old('jumlahIkanLain') }}" required >@error('jumlahIkanLain')<span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>@enderror</td><td style="padding-right:10px" ><input id="bobotIkanLain" type="number" class="form-control @error('bobotIkanLain') is-invalid @enderror" name="bobotIkanLain" value="{{ old('bobotIkanLain') }}" required >@error('bobotIkanLain')<span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>@enderror</td></tr></table>';
+        $('#hide1').hide();
+        $('#hide2').hide();
+        $('#hide3').hide();
+        $('#hide4').hide();
+      }
+      else 
+      {
+        document.getElementById('div1').innerHTML='';
+        $('#hide1').show();
+        $('#hide2').show();
+        $('#hide3').show();
+        $('#hide4').show();
+      }
+  });
+});
+</script>
+<script>
+$(function() {
    $('#nelayan').on('change', function(){
 
        var umur = $(this).children('option:selected').data('umur');
        var jenis = $(this).children('option:selected').data('jenis');
-      //  $('#umur').val(umur);
-      //  $('#jenisNelayan').val(jenis);
        document.getElementById("umur").value = umur;
        document.getElementById("jenisNelayan").value = jenis;
    });
@@ -283,7 +306,6 @@ $(function() {
    $("#tambah").click(function(){
        ++i;
        $("#tambahIkanTable").append('<tr id="tr1"><th style="font-weight: normal;">Jenis TCT</th><th style="font-weight: normal;">Jumlah Ikan</th><th style="font-weight: normal;">Bobot Ikan</th><th style="font-weight: normal;"></th></tr><tr id="tr2"><td width="210" style="padding-right:0px"   ><select name="tambahIkan['+i+'][jenis]" id="" class="form-control center select2bs4" required > <option selected="selected" hidden value="" disabled selected >Pilih Jenis Ikan</option> <option value="Tongkol Abu-Abu">Tongkol Abu-Abu</option><option value="Tongkol Komo">Tongkol Komo</option><option value="Tongkol Krai">Tongkol Krai</option><option value="Tongkol Lisong">Tongkol Lisong</option><option value="Tuna Albakora">Tuna Albakora</option><option value="Tuna Cakalang">Tuna Cakalang</option><option value="Tuna Madidihang">Tuna Madidihang</option><option value="Tuna Mata Besar">Tuna Mata Besar</option><option value="Tuna Neritik">Tuna Neritik</option><option value="Tuna Sirip Biru Selatan">Tuna Sirip Biru Selatan</option><option value="Tenggiri">Tenggiri</option><option value="Tenggiri Papan">Tenggiri Papan</option></select> @error('tambahIkan')<span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>@enderror</td><td width="170" style="padding-right:20px;"><input name="tambahIkan['+i+'][jumlah]" type="number" class="form-control"></td><td width="170" style="padding-right:20px"><input name="tambahIkan['+i+'][bobot]" type="number" class="form-control" required></td><td ><button type="button" style="padding-left:0.5rem;padding-right:0.5rem" name="hapus" id="hapus" class="hapus btn btn-danger">Hapus</button></td></tr>');
-       console.log(i);
        $('.select2bs4').select2({
           theme: 'bootstrap4'
         });
@@ -293,7 +315,6 @@ $(function() {
         $('#tr1').remove();
         $('#tr2').remove();
         i--;
-        // $(this).parents('tes2').remove();
    });  
 </script>
 

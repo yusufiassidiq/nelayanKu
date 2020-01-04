@@ -23,6 +23,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/dashboard','HomeController@dashboardPage')->name('dashboardPage');
 Route::get('/tambah_nelayan','HomeController@tambahNelayanPage')->name('tambahNelayanPage');
 Route::post('/storeNelayan','HomeController@storeNelayan')->name('storeNelayan');
 Route::get('/tambah_data','HomeController@tambahDataPage')->name('tambahDataPage');

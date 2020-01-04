@@ -26,15 +26,15 @@
           
           <li class="nav-header">APLIKASI PENDATAAN NELAYAN</li>
           
-          <!-- <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
+          <li class="nav-item has-treeview">
+            <a href="{{route('dashboardPage')}}" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
-                <i class="fas fa-angle-left right"></i>
+                <!-- <i class="fas fa-angle-left right"></i> -->
               </p>
             </a>
-            <ul class="nav nav-treeview">
+            <!-- <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="#" class="nav-link">
                   <i class="nav-icon fas fa-chart-bar"></i>
@@ -47,8 +47,8 @@
                   <p>Nelayan Terbaik</p>
                 </a>
               </li>
-            </ul>
-          </li> -->
+            </ul> -->
+          </li>
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="fas fa-ship nav-icon"></i>

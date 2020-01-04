@@ -39,13 +39,7 @@ class HomeController extends Controller
         return view('tambah_nelayan');
     }
 
-    public function tambahDataPage(){
-        $nelayans = Nelayan::all();
-        return view('tambah_data',compact('nelayans'));
-    }
-
-    public function listDataPage(){
-        $datas              = DataTangkapan::orderBy('id','DESC')->get();
+    public function dashboardPage(){
         $totalNelayan       = DataTangkapan::distinct('nelayan')->count('nelayan');
         $totalData          = DataTangkapan::count();
         $jumlahTangkapan    = DataTangkapan::sum('jumlah');
@@ -55,7 +49,18 @@ class HomeController extends Controller
         if($nelayanTerbaik == NULL) $nelayanTerbaik = "-";
         $year = Carbon::now()->format('Y');
         $jumlahperbulan = DataTangkapan::select('tanggal', DB::raw('sum(jumlah) as jumlah'))->whereYear('tanggal',$year)->groupBy('tanggal')->get();
-        return view('list_data',compact('year','jumlahperbulan','datas','totalNelayan','totalData','jumlahTangkapan','nelayanTerbaik'));
+        return view('dashboard',compact('year','jumlahperbulan','totalNelayan','totalData','jumlahTangkapan','nelayanTerbaik'));
+    }
+
+    public function tambahDataPage(){
+        $nelayans = Nelayan::all();
+        return view('tambah_data',compact('nelayans'));
+    }
+
+    public function listDataPage(){
+        $datas = DataTangkapan::orderBy('id','DESC')->get();
+        
+        return view('list_data',compact('datas'));
     }
 
     public function storeNelayan(Request $request){
@@ -92,7 +97,7 @@ class HomeController extends Controller
             $value['tanggal'] = Carbon::now()->format('Y-m-d');
             DataTangkapan::create($value);
         }
-        dd($value);
+        // dd($value);
         
         return back()->with('success', 'Record Created Successfully.');
     }

@@ -67,9 +67,9 @@
                             <!-- small card -->
                             <div class="small-box bg-warning">
                               <div class="inner">
-                                <h3>{{$jumlahTangkapan}} Ekor</h3>
+                                <h3>{{$hargaTertinggi}} Rupiah</h3>
 
-                                <p>Total Jumlah Tangkapan</p>
+                                <p>Harga Jual Tertinggi</p>
                               </div>
                               <div class="icon">
                                 <i class="fas fa-balance-scale"></i>
@@ -137,14 +137,14 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
 <script>
 // Bar chart
-  var jumlahperbulan = {!! json_encode($jumlahperbulan) !!};
+  var bobotperbulan = {!! json_encode($bobotperbulan) !!};
   var tahun = {!!json_encode($year) !!};
-  var jumlah = new Array(12).fill(0);
-
-  for (var i = 0; i < jumlahperbulan.length; i++){
-    var dt = jumlahperbulan[i].tanggal.split("-");
+  var bobot = new Array(12).fill(0);
+  console.log(bobotperbulan);
+  for (var i = 0; i < bobotperbulan.length; i++){
+    var dt = bobotperbulan[i].tanggal.split("-");
     console.log(dt);
-    jumlah[parseInt(dt[1])-1] = jumlahperbulan[i].jumlah;
+    bobot[parseInt(dt[1])-1] = bobotperbulan[i].bobot;
   }
   new Chart(document.getElementById("bar-chart"), {
     type: 'bar',
@@ -157,7 +157,7 @@
           backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850","#f5c57d","#a230c2","#d12d2a","#7471d9","#396639",
           "#D6B8CE","#D6D640"],
           // data: [2478,5267,734,8784,433,10100,3214,7362,8352,4356,1573,3125]
-          data : jumlah,
+          data : bobot,
         }
       ]
     },

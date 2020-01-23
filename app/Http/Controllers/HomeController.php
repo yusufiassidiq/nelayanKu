@@ -42,14 +42,17 @@ class HomeController extends Controller
     public function dashboardPage(){
         $totalNelayan       = DataTangkapan::distinct('nelayan')->count('nelayan');
         $bobotTangkapan     = DataTangkapan::sum('bobot');
-        $jumlahTangkapan    = DataTangkapan::sum('jumlah');
+        // $jumlahTangkapan    = DataTangkapan::sum('jumlah');
+        $hargaTertinggi     = DataTangkapan::max('jumlah'); //variabel jumlah adalah harga, belum dirubah karena permintaan perubahan sudah dalam proses pemakaian
+        if($hargaTertinggi == NULL) $hargaTertinggi = "0";
         $dataNelayanTerbaik = DataTangkapan::select('nelayan',DB::raw('sum(jumlah)'))->groupBy('nelayan')->get();
         $sumBobot           = $dataNelayanTerbaik->max('sum(bobot)');
         $nelayanTerbaik     = $dataNelayanTerbaik->where('sum(bobot)',$sumBobot)->first()['nelayan'];
         if($nelayanTerbaik == NULL) $nelayanTerbaik = "-";
         $year = Carbon::now()->format('Y');
-        $jumlahperbulan = DataTangkapan::select('tanggal', DB::raw('sum(jumlah) as jumlah'))->whereYear('tanggal',$year)->groupBy('tanggal')->get();
-        return view('dashboard',compact('year','jumlahperbulan','totalNelayan','bobotTangkapan','jumlahTangkapan','nelayanTerbaik'));
+        $bobotperbulan = DataTangkapan::select('tanggal', DB::raw('sum(bobot) as bobot'))->whereYear('tanggal',$year)->groupBy('tanggal')->get();
+        // dd($bobotperbulan);
+        return view('dashboard',compact('year','bobotperbulan','totalNelayan','bobotTangkapan','hargaTertinggi','nelayanTerbaik'));
     }
 
     public function tambahDataPage(){
@@ -99,6 +102,7 @@ class HomeController extends Controller
             $value['nelayan']=$request->nelayan;
             $value['alattangkap']=$request->alatTangkap;
             $value['jeniskapal']=$request->jenisKapal;
+            $value['jenisIkanLainnya']=$request->jenisIkanLainnya;
             $value['namakapal']=$request->namaKapal;
             $value['nokapal']=$request->noKapal;
             $value['jumlahABK']=$request->jumlahABK;

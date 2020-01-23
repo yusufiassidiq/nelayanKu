@@ -46,10 +46,11 @@
                       <th>No</th>
                       <th>Nelayan</th>
                       <th>Jenis Ikan</th>
-                      <th>Jumlah</th>
+                      <th>Harga</th>
                       <th>Bobot</th>
                       <th>Alat Tangkap</th>
                       <th>Jenis Kapal</th>
+                      <th>Jenis Ikan Lainnya</th>
                       <th>Nama Kapal</th>
                       <th>Nomor Kapal</th>
                       <th>Jumlah ABK</th>
@@ -70,6 +71,7 @@
                       <td>{{$data->bobot}}</td>
                       <td>{{$data->alattangkap}}</td>
                       <td>{{$data->jeniskapal}}</td>
+                      <td>{{$data->jenisIkanLainnya}}</td>
                       <td>{{$data->namakapal}}</td>
                       <td>{{$data->nokapal}}</td>
                       <td>{{$data->jumlahABK}}</td>

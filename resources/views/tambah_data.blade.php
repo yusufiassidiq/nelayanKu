@@ -90,7 +90,7 @@
                   <table id="tambahIkanTable">
                     <tr>
                       <th style="font-weight: normal;">Jenis TCT</th>
-                      <th id="hide3" style="font-weight: normal;">Jumlah Ikan</th>
+                      <th id="hide3" style="font-weight: normal;">Harga Ikan</th>
                       <th id="hide4" style="font-weight: normal;">Bobot Ikan</th>
                       <th style="font-weight: normal;"></th>
                     </tr>
@@ -146,7 +146,7 @@
                         <option value="Jaring Insang Tetap">Jaring Insang Tetap</option>
                         <option value="Bagan Tancap">Bagan Tancap</option>
                         <option value="Jaring Angkat Lainnya">Jaring Angkat Lainnya</option>
-                        <option value="Rawai Tetap">Rawai Tetap</option>
+                        <option value="Pancing Ulur">Pancing Ulur</option>
                         <option value="Pancing Tonda">Pancing Tonda</option>
                         <option value="Pancing Cumi">Pancing Cumi</option>
                         <option value="Pancing Lainnya">Pancing Lainnya</option>
@@ -183,6 +183,16 @@
                         <option value="Kapal Motor >200 GT">Kapal Motor >200 GT</option>
                       </select> 
                       @error('jenisKapal')
+                          <span class="invalid-feedback" role="alert">
+                              <strong>{{ $message }}</strong>
+                          </span>
+                      @enderror
+                    </div>
+
+                    <div class="form-group" >
+                    <label for="jenisIkanLainnya">Jenis Ikan Lainnya</label>
+                    <input id="jenisIkanLainnya" type="text" class="form-control @error('jenisIkanLainnya') is-invalid @enderror" name="jenisIkanLainnya" value="{{ old('jenisIkanLainnya') }}"  >
+                      @error('jenisIkanLainnya')
                           <span class="invalid-feedback" role="alert">
                               <strong>{{ $message }}</strong>
                           </span>

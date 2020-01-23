@@ -23,6 +23,7 @@ class CreateDatatangkapanTable extends Migration
             $table->integer('bobot');
             $table->string('alattangkap')->nullable();
             $table->string('jeniskapal')->nullable();
+            $table->string('jenisIkanLainnya')->nullable();
             $table->string('namakapal')->nullable();
             $table->string('nokapal')->nullable();
             $table->integer('jumlahABK')->nullable();

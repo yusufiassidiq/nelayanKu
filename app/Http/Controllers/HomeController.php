@@ -47,8 +47,8 @@ class HomeController extends Controller
         if($hargaTertinggi == NULL) $hargaTertinggi = "0";
         $dataNelayanTerbaik = DataTangkapan::select('nelayan',DB::raw('sum(jumlah)'))->groupBy('nelayan')->get();
         $sumBobot           = $dataNelayanTerbaik->max('sum(bobot)');
-        $nelayanTerbaik     = $dataNelayanTerbaik->where('sum(bobot)',$sumBobot)->first()['nelayan'];
-        if($nelayanTerbaik == NULL) $nelayanTerbaik = "-";
+        $nelayanTerbaik     = isset($dataNelayanTerbaik) ? $dataNelayanTerbaik->where('sum(bobot)',$sumBobot)->first()['nelayan'] : 0 ;
+        if($nelayanTerbaik == NULL || $nelayanTerbaik == 0) {$nelayanTerbaik = "-";}
         $year = Carbon::now()->format('Y');
         $bobotperbulan = DataTangkapan::select('tanggal', DB::raw('sum(bobot) as bobot'))->whereYear('tanggal',$year)->groupBy('tanggal')->get();
         // dd($bobotperbulan);

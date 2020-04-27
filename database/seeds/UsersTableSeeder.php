@@ -15,15 +15,15 @@ class UsersTableSeeder extends Seeder
         $user1 = new User([
         	'id' => '1',
         	'name' => 'Admin',
-        	'email' => 'admin@gmail.com',
+        	'email' => 'admin@test.com',
             'password' => Hash::make('123123'),
         ]);
         $user1->save();
 
         $user2 = new User([
         	'id' => '2',
-        	'name' => 'Gilar',
-        	'email' => 'gilar@gmail.com',
+        	'name' => 'User',
+        	'email' => 'user@gmail.com',
             'password' => Hash::make('123123'),
         ]);
         $user2->save();

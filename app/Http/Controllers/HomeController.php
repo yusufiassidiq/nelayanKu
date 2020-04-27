@@ -102,7 +102,7 @@ class HomeController extends Controller
             $value['nelayan']=$request->nelayan;
             $value['alattangkap']=$request->alatTangkap;
             $value['jeniskapal']=$request->jenisKapal;
-            $value['jenisIkanLainnya']=$request->jenisIkanLainnya;
+            
             $value['namakapal']=$request->namaKapal;
             $value['nokapal']=$request->noKapal;
             $value['jumlahABK']=$request->jumlahABK;

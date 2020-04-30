@@ -22,7 +22,7 @@
     <!-- /.content-header -->
     <div class="container-fluid">
         <div class="row-md-6 justify-content-center">
-            <div class="col-md-6 span6" style="float: none; margin: 0 auto;">
+            <div class="col-md-8 span6" style="float: none; margin: 0 auto;">
 
             @if ($message = Session::get('success'))
             <div id="messageAlert" class="alert alert-success alert-dismissible">
@@ -89,14 +89,15 @@
                   <!-- <div class="form-group"> -->
                   <table id="tambahIkanTable">
                     <tr>
-                      <th style="font-weight: normal;">Jenis TCT</th>
-                      <th id="hide3" style="font-weight: normal; padding-left:20px">Harga Ikan</th>
-                      <th id="hide4" style="font-weight: normal;">Bobot Ikan</th>
-                      <th style="font-weight: normal;"></th>
+                      <th class="col-md-4" style="font-weight: normal; padding-left:0px">Jenis Ikan</th>
+                      <th class="col-md-2"id="hide3" style="font-weight: normal;">Harga Ikan</th>
+                      <th class="col-md-2"id="hide4" style="font-weight: normal;">Bobot Ikan</th>
+                      <th class="col-md-2"style="font-weight: normal;">Kategori</th>
+                      <th class="col-md-2"style="font-weight: normal;"></th>
                     </tr>
                     <tr>
-                        <td>
-                          <select name="tambahIkan[0][jenisTCT]" id="pilihanikan" class="form-control pilihanikan center select2bs4"  > 
+                        <td class="col-md-4" style=" padding-left:0px">
+                          <select name="tambahIkan[0][jenisTCT]" id="pilihanikan" class="form-control pilihanikan center select2bs4" required > 
                             <option selected="selected" hidden value="" disabled selected>Pilih Jenis Ikan</option> 
                             <option value="Tongkol Abu-Abu">Tongkol Abu-Abu</option>
                             <option value="Tongkol Komo">Tongkol Komo</option>
@@ -110,49 +111,69 @@
                             <option value="Tuna Sirip Biru Selatan">Tuna Sirip Biru Selatan</option>
                             <option value="Tenggiri">Tenggiri</option>
                             <option value="Tenggiri Papan">Tenggiri Papan</option>
-                            
+                            <option value="Kerapu">Kerapu</option>
+                            <option value="Kurisi">Kurisi</option>
+                            <option value="Pari">Pari</option>
+                            <option value="Selar">Selar</option>
+                            <option value="Kakap Merah">Kakap Merah</option>
+                            <option value="Anggoli">Anggoli</option>
+                            <option value="Tumpu">Tumpu</option>
+                            <option value="Kuwe">Kuwe</option>
+                            <option value="Tambak">Tambak</option>
+                            <option value="Mancung">Mancung</option>
+                            <option value="Kaci">Kaci</option>
+                            <option value="Kalat">Kalat</option>
+                            <option value="Kembung">Kembung</option>
+                            <option value="Ekor Kuning">Ekor Kuning</option>
+                            <option value="Teri">Teri</option>
+                            <option value="Selayang">Selayang</option>
+                            <option value="Jahan">Jahan</option>
+                            <option value="Tamban">Tamban</option>
+                            <option value="Hiu">Hiu</option>
+                            <option value="Kakap">Kakap</option>
+                            <option value="Bunga Baruk">Bunga Baruk</option>
+                            <option value="Belanak">Belanak</option>
+                            <option value="Bawal Hitam">Bawal Hitam</option>
+                            <option value="Umbut-umbut">Umbut-umbut</option>
+                            <option value="Alu-alu">Alu-alu</option>
+                            <option value="Rajungan">Rajungan</option>
+                            <option value="Cumi-cumi">Cumi-cumi</option>
+                            <option value="Lobster">Lobster</option>
+                            <option value="Gurita">Gurita</option>
+                            <option value="Teripang">Teripang</option>
                           </select> 
-                          @error('tambahIkan')
+                          @error('tambahIkan[0][jenisTCT]')
                               <span class="invalid-feedback" role="alert">
                                   <strong>{{ $message }}</strong>
                               </span>
                           @enderror
                         </td>
-                        <td id="hide1" width="170" style="font-weight: normal; padding-left:20px;padding-right:20px;">
-                          <input name="tambahIkan[0][hargaTCT]" type="number" class="form-control" >
+                        <td class="col-md-2" id="hide1" width="170" >
+                          <input name="tambahIkan[0][hargaTCT]" type="number" class="form-control" required>
                         </td>
-                        <td id="hide2" width="170" style="padding-right:20px">
-                          <input name="tambahIkan[0][bobotTCT]" type="number" class="form-control" >
+                        <td class="col-md-2" id="hide2" width="170" >
+                          <input name="tambahIkan[0][bobotTCT]" type="number" class="form-control" required>
                         </td>
-                        <td>
+                        <td class="col-md-3" >
+                          <select name="tambahIkan[0][kategori]" id="pilihankategori" class="form-control pilihankategori center select2bs4" required > 
+                            <option selected="selected" hidden value="" disabled selected>Pilih Kategori Ikan</option> 
+                            <option value="TCT">TCT</option>
+                            <option value="Lainnnya">Lainnya</option>
+                                                       
+                          </select> 
+                          @error('tambahIkan[0][kategori]')
+                              <span class="invalid-feedback" role="alert">
+                                  <strong>{{ $message }}</strong>
+                              </span>
+                          @enderror
+                        </td>
+                        <td class="col-md-2" style="padding-right:0px" >
                         <button type="button" style="padding-left:0.5rem;padding-right:0.5rem" name="tambah" id="tambah" class="tambah btn btn-success">Tambah</button>
                         </td>
                     </tr>
                   </table>
                   <div id="div1"></div>
-                  <br>
-                  <table id="tambahIkanLainnyaTable">
-                    <tr>
-                      <th style="font-weight: normal;">Jenis Ikan Lainnya</th>
-                      <th style="font-weight: normal; padding-left:20px">Harga Ikan</th>
-                      <th style="font-weight: normal;">Bobot Ikan</th>
-                      <th style="font-weight: normal;"></th>
-                    </tr>
-                    <tr>
-                      <td>
-                      <input width="210"    type="text" class="form-control @error('tambahIkanLainnya[0][jenisIkanLainnya]') is-invalid @enderror" name="tambahIkanLainnya[0][jenisIkanLainnya]" value="{{ old('tambahIkanLainnya[0][jenisIkanLainnya]') }}"  >
-                      </td>
-                      <td width="170" style="padding-right:20px; padding-left:20px">
-                        <input name="tambahIkanLainnya[0][hargaIkanLainnya]" type="number" class="form-control" >
-                      </td>
-                      <td width="170" style="padding-right:20px">
-                        <input name="tambahIkanLainnya[0][bobotIkanLainnya]" type="number" class="form-control" >
-                      </td>
-                      <td>
-                        <button type="button" style="padding-left:0.5rem;padding-right:0.5rem" name="tambah2" id="tambah2" class="tambah2 btn btn-success">Tambah</button>
-                      </td>
-                    </tr>
-                  </table>
+                  
 
                   <div class="form-group" style="padding-top:15px;">
                     <label for="alatTangkap">Alat Tangkap</label>
@@ -329,7 +350,7 @@ $(function() {
       
    $("#tambah").click(function(){
        ++i;
-       $("#tambahIkanTable").append('<tr id="tr1"><th style="font-weight: normal;">Jenis TCT</th><th id="hide3" style="font-weight: normal; padding-left:20px">Harga Ikan</th><th id="hide4" style="font-weight: normal;">Bobot Ikan</th><th style="font-weight: normal;"></th></tr><tr id="tr2"><td><select name="tambahIkan['+i+'][jenisTCT]" id="pilihanikan" class="form-control pilihanikan center select2bs4"  > <option selected="selected" hidden value="" disabled selected>Pilih Jenis Ikan</option> <option value="Tongkol Abu-Abu">Tongkol Abu-Abu</option><option value="Tongkol Komo">Tongkol Komo</option><option value="Tongkol Krai">Tongkol Krai</option><option value="Tongkol Lisong">Tongkol Lisong</option><option value="Tuna Albakora">Tuna Albakora</option><option value="Tuna Cakalang">Tuna Cakalang</option><option value="Tuna Madidihang">Tuna Madidihang</option><option value="Tuna Mata Besar">Tuna Mata Besar</option><option value="Tuna Neritik">Tuna Neritik</option><option value="Tuna Sirip Biru Selatan">Tuna Sirip Biru Selatan</option><option value="Tenggiri">Tenggiri</option><option value="Tenggiri Papan">Tenggiri Papan</option></select> @error('tambahIkan')<span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>@enderror</td><td id="hide1" width="170" style="font-weight: normal; padding-left:20px;padding-right:20px;"><input name="tambahIkan['+i+'][hargaTCT]" type="number" class="form-control" ></td><td id="hide2" width="170" style="padding-right:20px"><input name="tambahIkan['+i+'][bobotTCT]" type="number" class="form-control" ></td><td><button type="button" style="padding-left:0.5rem;padding-right:0.5rem" name="hapus" id="hapus" class="hapus btn btn-danger">Hapus</button></td></tr>');
+       $("#tambahIkanTable").append('<tr id="tr1"><th class="col-md-4" style="font-weight: normal; padding-left:0px">Jenis Ikan</th><th class="col-md-2"id="hide3" style="font-weight: normal;">Harga Ikan</th><th class="col-md-2"id="hide4" style="font-weight: normal;">Bobot Ikan</th><th class="col-md-2"style="font-weight: normal;">Kategori</th><th class="col-md-2"style="font-weight: normal;"></th></tr><tr id="tr2"><td class="col-md-4" style=" padding-left:0px"><select name="tambahIkan['+i+'][jenisTCT]" id="pilihanikan" class="form-control pilihanikan center select2bs4" required > <option selected="selected" hidden value="" disabled selected>Pilih Jenis Ikan</option> <option value="Tongkol Abu-Abu">Tongkol Abu-Abu</option><option value="Tongkol Komo">Tongkol Komo</option><option value="Tongkol Krai">Tongkol Krai</option><option value="Tongkol Lisong">Tongkol Lisong</option><option value="Tuna Albakora">Tuna Albakora</option><option value="Tuna Cakalang">Tuna Cakalang</option><option value="Tuna Madidihang">Tuna Madidihang</option><option value="Tuna Mata Besar">Tuna Mata Besar</option><option value="Tuna Neritik">Tuna Neritik</option><option value="Tuna Sirip Biru Selatan">Tuna Sirip Biru Selatan</option><option value="Tenggiri">Tenggiri</option><option value="Tenggiri Papan">Tenggiri Papan</option><option value="Kerapu">Kerapu</option><option value="Kurisi">Kurisi</option><option value="Pari">Pari</option><option value="Selar">Selar</option><option value="Kakap Merah">Kakap Merah</option><option value="Anggoli">Anggoli</option><option value="Tumpu">Tumpu</option><option value="Kuwe">Kuwe</option><option value="Tambak">Tambak</option><option value="Mancung">Mancung</option><option value="Kaci">Kaci</option><option value="Kalat">Kalat</option><option value="Kembung">Kembung</option><option value="Ekor Kuning">Ekor Kuning</option><option value="Teri">Teri</option><option value="Selayang">Selayang</option><option value="Jahan">Jahan</option><option value="Tamban">Tamban</option><option value="Hiu">Hiu</option><option value="Kakap">Kakap</option><option value="Bunga Baruk">Bunga Baruk</option><option value="Belanak">Belanak</option><option value="Bawal Hitam">Bawal Hitam</option><option value="Umbut-umbut">Umbut-umbut</option><option value="Alu-alu">Alu-alu</option><option value="Rajungan">Rajungan</option><option value="Cumi-cumi">Cumi-cumi</option><option value="Lobster">Lobster</option><option value="Gurita">Gurita</option><option value="Teripang">Teripang</option></select> @error('tambahIkan[i][jenisTCT]')<span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>@enderror</td><td class="col-md-2" id="hide1" width="170" ><input name="tambahIkan['+i+'][hargaTCT]" type="number" class="form-control" required></td><td class="col-md-2" id="hide2" width="170" ><input name="tambahIkan['+i+'][bobotTCT]" type="number" class="form-control" required></td><td class="col-md-3" ><select name="tambahIkan['+i+'][kategori]" id="pilihankategori" class="form-control pilihankategori center select2bs4" required > <option selected="selected" hidden value="" disabled selected>Pilih Kategori Ikan</option> <option value="TCT">TCT</option><option value="Lainnnya">Lainnya</option>                         </select> @error('tambahIkan[i][kategori]')<span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>@enderror</td><td class="col-md-2" style="padding-right:0px" ><button type="button" style="padding-left:0.5rem;padding-right:0.5rem" name="hapus" id="hapus" class="hapus btn btn-danger">Hapus</button></td></tr>');
        $('.select2bs4').select2({
           theme: 'bootstrap4'
         });
@@ -339,23 +360,6 @@ $(function() {
         $('#tr1').remove();
         $('#tr2').remove();
         i--;
-   });  
-</script>
-<script type="text/javascript">
-  var j = 0;
-
-  $("#tambah2").click(function(){
-       ++j;
-       $("#tambahIkanLainnyaTable").append('<tr id="tr1lain"><th style="font-weight: normal;">Jenis Ikan Lainnya</th><th style="font-weight: normal; padding-left:20px">Harga Ikan</th><th style="font-weight: normal;">Bobot Ikan</th><th style="font-weight: normal;"></th></tr><tr id="tr2lain"><td><input width="210"  type="text" class="form-control @error('tambahIkanLainnya[+j+][jenisIkanLainnya]') is-invalid @enderror" name="tambahIkanLainnya['+j+'][jenisIkanLainnya]" value="{{ old('tambahIkanLainnya[+j+][jenisIkanLainnya]') }}"  ></td><td width="170" style="padding-right:20px; padding-left:20px"><input name="tambahIkanLainnya['+j+'][hargaIkanLainnya]" type="number" class="form-control" ></td><td width="170" style="padding-right:20px"><input name="tambahIkanLainnya['+j+'][bobotIkanLainnya]" type="number" class="form-control" ></td><td><button type="button" style="padding-left:0.5rem;padding-right:0.5rem" name="hapus2" id="hapus2" class="hapus2 btn btn-danger">Hapus</button></td></tr>');
-       $('.select2bs4').select2({
-          theme: 'bootstrap4'
-        });
-      });
-  
-   $(document).on('click', '.hapus2', function(){  
-        $('#tr1lain').remove();
-        $('#tr2lain').remove();
-        j--;
    });  
 </script>
 

@@ -45,12 +45,11 @@
                     <tr>
                       <th>No</th>
                       <th>Nelayan</th>
-                      <th>Jenis TCT</th>
-                      <th>Harga TCT</th>
-                      <th>Bobot TCT</th>
-                      <th>Jenis Ikan Lainnya</th>
-                      <th>Harga Ikan Lainnya</th>
-                      <th>Bobot Ikan Lainnya</th>
+                      <th>Jenis Ikan</th>
+                      <th>Harga Ikan</th>
+                      <th>Bobot Ikan</th>
+                      <th>Kategori</th>
+                      
                       <th>Alat Tangkap</th>
                       <th>Jenis Kapal</th>
                       
@@ -72,9 +71,8 @@
                       <td>{{$data->jenisTCT}}</td>
                       <td>{{$data->hargaTCT}}</td>
                       <td>{{$data->bobotTCT}}</td>
-                      <td>{{$data->jenisIkanLainnya}}</td>
-                      <td>{{$data->hargaIkanLainnya}}</td>
-                      <td>{{$data->bobotIkanLainnya}}</td>
+                      <td>{{$data->kategori}}</td>
+                      
                       <td>{{$data->alattangkap}}</td>
                       <td>{{$data->jeniskapal}}</td>
                       

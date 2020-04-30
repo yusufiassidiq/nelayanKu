@@ -94,7 +94,7 @@ class HomeController extends Controller
         ]);
         // $asd = $request->tambahIkan;
         // dd($asd);
-        if (($request->tambahIkan[0]["hargaTCT"])!=null && ($request->tambahIkan[0]["bobotTCT"])!=null && ($request->tambahIkan[0]["jenisTCT"])!=null){
+        // if (($request->tambahIkan[0]["hargaTCT"])!=null && ($request->tambahIkan[0]["bobotTCT"])!=null && ($request->tambahIkan[0]["jenisTCT"])!=null){
             foreach ($request->tambahIkan as $key => $value) {
                 // if ($value['jenis']=="Lainnya"){
                     //     $value['jenis'] = $request->jenisIkanLain;
@@ -115,25 +115,25 @@ class HomeController extends Controller
                 $value['tanggal'] = Carbon::now()->format('Y-m-d');
                 DataTangkapan::create($value);
             }
-        }
+        // }
         
-        elseif(!empty($request->tambahIkanLainnya)){
-            foreach ($request->tambahIkanLainnya as $key => $value) {
-                $value['nelayan']=$request->nelayan;
-                $value['alattangkap']=$request->alatTangkap;
-                $value['jeniskapal']=$request->jenisKapal;
+        // elseif(!empty($request->tambahIkanLainnya)){
+        //     foreach ($request->tambahIkanLainnya as $key => $value) {
+        //         $value['nelayan']=$request->nelayan;
+        //         $value['alattangkap']=$request->alatTangkap;
+        //         $value['jeniskapal']=$request->jenisKapal;
                 
-                $value['namakapal']=$request->namaKapal;
-                $value['nokapal']=$request->noKapal;
-                $value['jumlahABK']=$request->jumlahABK;
-                $value['jenisnelayan']=$request->jenisNelayan;
-                $value['umurnelayan']=$request->umur;
-                $value['dpi']=$request->dpi;
-                $value['tempatpendaratanikan']=$request->tempatpendaratanikan;
-                $value['tanggal'] = Carbon::now()->format('Y-m-d');
-                DataTangkapan::create($value);
-            }
-        }
+        //         $value['namakapal']=$request->namaKapal;
+        //         $value['nokapal']=$request->noKapal;
+        //         $value['jumlahABK']=$request->jumlahABK;
+        //         $value['jenisnelayan']=$request->jenisNelayan;
+        //         $value['umurnelayan']=$request->umur;
+        //         $value['dpi']=$request->dpi;
+        //         $value['tempatpendaratanikan']=$request->tempatpendaratanikan;
+        //         $value['tanggal'] = Carbon::now()->format('Y-m-d');
+        //         DataTangkapan::create($value);
+        //     }
+        // }
         // dd($value);
         // dd($request->tambahIkanLainnya);
         return back()->with('success', 'Data Tangkapan Berhasil Ditambahkan!');
